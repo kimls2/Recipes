@@ -4,6 +4,8 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import kim.yiusk.recipes.RecipesApplication
+import kim.yiusk.recipes.data.DatabaseModule
+import kim.yiusk.recipes.network.NetworkModule
 import javax.inject.Singleton
 
 /**
@@ -12,9 +14,9 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     AndroidSupportInjectionModule::class,
-    AppModule::class
-//    NetworkModule::class,
-//    DatabaseModule::class,
+    AppModule::class,
+    NetworkModule::class,
+    DatabaseModule::class
 //    HomeBuilder::class,
 //    ArtistDetailsBuilder::class,
 //    AppAssistedModule::class
