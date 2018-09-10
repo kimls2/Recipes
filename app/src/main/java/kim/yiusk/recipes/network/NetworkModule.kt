@@ -42,7 +42,7 @@ class NetworkModule {
         val builder = OkHttpClient().newBuilder()
         builder.apply {
             if (BuildConfig.DEBUG) {
-                addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
+                addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 addNetworkInterceptor(StethoInterceptor())
             }
             addInterceptor(authInterceptor)
@@ -64,9 +64,9 @@ class NetworkModule {
                 .build()
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideArtistApi(retrofit: Retrofit): ArtistApi {
-//        return retrofit.create(ArtistApi::class.java)
-//    }
+    @Provides
+    @Singleton
+    fun provideRecipeApi(retrofit: Retrofit): RecipeApi {
+        return retrofit.create(RecipeApi::class.java)
+    }
 }

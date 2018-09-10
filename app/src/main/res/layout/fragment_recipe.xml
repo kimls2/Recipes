@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="state"
+            type="kim.yiusk.recipes.home.recipe.RecipeFragmentViewState" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/recipe_detail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:elevation="4dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="h,1.5:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:recipeImageUrl="@{state.recipe.invoke().imageUrl}" />
+
+        <TextView
+            android:id="@+id/recipe_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@{state.recipe.invoke().title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_detail" />
+
+        <com.airbnb.epoxy.EpoxyRecyclerView
+            android:id="@+id/search_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_title"
+            app:spanCount="4" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

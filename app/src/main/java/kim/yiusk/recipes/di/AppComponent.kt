@@ -5,6 +5,7 @@ import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import kim.yiusk.recipes.RecipesApplication
 import kim.yiusk.recipes.data.DatabaseModule
+import kim.yiusk.recipes.home.HomeBuilder
 import kim.yiusk.recipes.network.NetworkModule
 import javax.inject.Singleton
 
@@ -16,10 +17,9 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class,
     AppModule::class,
     NetworkModule::class,
-    DatabaseModule::class
-//    HomeBuilder::class,
-//    ArtistDetailsBuilder::class,
-//    AppAssistedModule::class
+    DatabaseModule::class,
+    HomeBuilder::class,
+    AppAssistedModule::class
 ])
 interface AppComponent : AndroidInjector<RecipesApplication> {
     @Component.Builder

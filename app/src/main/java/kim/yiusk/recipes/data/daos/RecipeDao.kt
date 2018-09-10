@@ -1,9 +1,7 @@
 package kim.yiusk.recipes.data.daos
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Update
+import android.arch.persistence.room.*
+import io.reactivex.Flowable
 import kim.yiusk.recipes.data.entities.Recipe
 
 /**
@@ -19,4 +17,13 @@ abstract class RecipeDao {
 
     @Delete
     abstract fun delete(recipe: Recipe): Int
+
+    @Query("SELECT * FROM recipes WHERE id = :id")
+    abstract fun getRecipeWithId(id: Long): Recipe?
+
+    @Query("SELECT * FROM recipes WHERE recipe_id = :id")
+    abstract fun getRecipeWithIdFlowable(id: String): Flowable<Recipe>
+
+    @Query("SELECT * FROM recipes WHERE recipe_id = :recipeId")
+    abstract fun getRecipeWithRecipeId(recipeId: String): Recipe?
 }
