@@ -39,7 +39,8 @@ class RecipeRepository @Inject constructor(
                     sourceUrl = remote.sourceUrl ?: local.sourceUrl,
                     imageUrl = remote.imageUrl ?: local.imageUrl,
                     socialRank = remote.socialRank ?: local.socialRank,
-                    publisherUrl = remote.publisherUrl ?: local.publisherUrl
+                    publisherUrl = remote.publisherUrl ?: local.publisherUrl,
+                    ingredients = remote.ingredients ?: local.ingredients
             )
 
 }

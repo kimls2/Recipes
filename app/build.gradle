@@ -97,6 +97,8 @@ dependencies {
     implementation "android.arch.lifecycle:reactivestreams:${versions.androidx.lifecycle}"
     kapt "android.arch.lifecycle:compiler:${versions.androidx.lifecycle}"
 
+    implementation "androidx.core:core-ktx:${versions.androidx.core_ktx}"
+
     // debugging
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.facebook.stetho:stetho:1.5.0'

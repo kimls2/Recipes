@@ -9,7 +9,7 @@ import kim.yiusk.recipes.data.entities.Recipe
  * @author <a href="yisuk@mobilabsolutions.com">yisuk</a>
  */
 data class RecipeFragmentViewState(
+        val isLoading: Boolean = false,
         val recipe: Async<Recipe> = Uninitialized,
         val searchResults: Async<List<Recipe>> = Uninitialized
-) : MvRxState {
-}
+) : MvRxState

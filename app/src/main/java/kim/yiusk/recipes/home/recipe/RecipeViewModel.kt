@@ -11,6 +11,7 @@ import kim.yiusk.recipes.domain.SearchRecipes
 import kim.yiusk.recipes.home.HomeActivity
 import kim.yiusk.recipes.util.AppRxSchedulers
 import kim.yiusk.recipes.util.BaseViewModel
+import kim.yiusk.recipes.util.RxLoadingCounter
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -41,12 +42,18 @@ class RecipeViewModel @AssistedInject constructor(
     private val randomTitle = "pasta"
 
     private var searchQuery = BehaviorSubject.createDefault(randomTitle)
+    private val loadingState = RxLoadingCounter()
 
     init {
         disposables += searchQuery.observeOn(schedulers.main)
                 .debounce(500, TimeUnit.MILLISECONDS, schedulers.io)
                 .distinctUntilChanged()
                 .subscribe(this::runSearchQuery, Timber::e)
+
+        loadingState.observable
+                .execute {
+                    copy(isLoading = it() ?: false)
+                }
 
         getRecipe.observe()
                 .toObservable()
@@ -72,11 +79,17 @@ class RecipeViewModel @AssistedInject constructor(
     }
 
     private fun refresh() {
+        loadingState.addLoader()
         launchInteractor(getRecipe, Unit)
+                .invokeOnCompletion { loadingState.removeLoader() }
     }
 
     private fun runSearchQuery(query: String) {
+        loadingState.addLoader()
         launchInteractor(searchRecipes, query)
+                .invokeOnCompletion {
+                    loadingState.removeLoader()
+                }
     }
 
 }

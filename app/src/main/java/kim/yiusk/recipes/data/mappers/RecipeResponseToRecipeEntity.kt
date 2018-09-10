@@ -19,7 +19,8 @@ class RecipeResponseToRecipeEntity @Inject constructor() : Mapper<RecipeResponse
                 sourceUrl = from.recipe.sourceUrl,
                 imageUrl = from.recipe.imageUrl,
                 socialRank = from.recipe.socialRank,
-                publisherUrl = from.recipe.publisherUrl
+                publisherUrl = from.recipe.publisherUrl,
+                ingredients = from.recipe.ingredients.toString()
         )
     }
 }

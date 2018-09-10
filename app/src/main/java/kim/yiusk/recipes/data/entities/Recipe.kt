@@ -21,7 +21,8 @@ data class Recipe(
         @ColumnInfo(name = "source_url") val sourceUrl: String? = null,
         @ColumnInfo(name = "image_url") val imageUrl: String? = null,
         @ColumnInfo(name = "social_rank") val socialRank: Int? = null,
-        @ColumnInfo(name = "publisher_url") val publisherUrl: String? = null
+        @ColumnInfo(name = "publisher_url") val publisherUrl: String? = null,
+        @ColumnInfo(name = "ingredients") val ingredients: String? = null
 ) {
     @Ignore constructor() : this(0)
 
